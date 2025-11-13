@@ -1,44 +1,38 @@
 {
-  // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
-    // File Layout
-    "rootDir": "./typescript/",
-    "outDir": "./javascript/",
+    /* === Estrutura de pastas === */
+    "rootDir": "./typescript",
+    "outDir": "./javascript",
 
-    // Environment Settings
-    // See also https://aka.ms/tsconfig/module
-    "module": "nodenext",
-    "target": "esnext",
+    /* === Ambiente Front-End === */
+    "target": "ES2020",                  // Compatível com navegadores modernos
+    "module": "ESNext",                  // Permite usar import/export nativo
+    "lib": ["DOM", "ES2020"],            // Inclui APIs do navegador e JS moderno
     "types": [],
-    // For nodejs:
-    // "lib": ["esnext"],
-    // "types": ["node"],
-    // and npm install -D @types/node
 
-    // Other Outputs
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
+    /* === Saída === */
+    "sourceMap": true,                   // Gera mapa de origem para debug
+    "declaration": false,                // Desativa .d.ts (não necessário no front)
+    "declarationMap": false,
 
-    // Stricter Typechecking Options
+    /* === Boas práticas e segurança === */
+    "strict": true,                      // Ativa todos os checks de tipo
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
 
-    // Style Options
-    // "noImplicitReturns": true,
-    // "noImplicitOverride": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    // "noFallthroughCasesInSwitch": true,
-    // "noPropertyAccessFromIndexSignature": true,
-
-    // Recommended Options
-    "strict": true,
-    "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
+    /* === Compatibilidade de módulos === */
+    "moduleResolution": "bundler",       // Melhor opção para ES Modules no navegador
+    "verbatimModuleSyntax": true,        // Mantém import/export exatamente como no código
+    "isolatedModules": true,             // Necessário se usar imports
     "skipLibCheck": true,
-  }
+
+    /* === JSX === */
+    "jsx": "preserve",                   // Ignora JSX (caso use HTML puro)
+    
+    /* === Detecção de módulos === */
+    "moduleDetection": "force"
+  },
+
+  "include": ["typescript/**/*"],
+  "exclude": ["node_modules", "javascript"]
 }

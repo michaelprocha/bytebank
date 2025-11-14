@@ -1,11 +1,12 @@
-import { Transaction } from "./account.js";
+import { Transaction, getBalance, balance } from "./account.js";
 
-function showValue(balance: HTMLSpanElement, currentBalance: number): void {
+function showValue(): void {
 	if (balance.textContent === "R$ -------") {
-		balance.textContent = `R$ ${currentBalance.toLocaleString("pt-BR")}`;
+		balance.textContent = `R$ ${getBalance().toLocaleString("pt-BR")}`;
 		return;
 	}
 	balance.textContent = "R$ -------";
+	return;
 }
 
 function todayDate(): string {
@@ -13,14 +14,4 @@ function todayDate(): string {
 	return data;
 }
 
-function getBalance(): number{
-	const data = localStorage.getItem("balance");
-	return data ? JSON.parse(data) : 0;
-}
-
-function getHistorical(): Transaction[]{
-	const data = localStorage.getItem("balance");
-	return data ? JSON.parse(data) : [];
-}
-
-export { showValue, todayDate, getBalance, getHistorical };
+export { showValue, todayDate };

@@ -2,7 +2,8 @@ import { Transaction, getBalance, balance } from "./account.js";
 
 function showValue(): void {
 	if (balance.textContent === "R$ -------") {
-		balance.textContent = `R$ ${getBalance().toLocaleString("pt-BR")}`;
+		const showBalance:string = getBalance().toFixed(2).replace('.', ",");
+		balance.textContent = `R$ ${showBalance}`;
 		return;
 	}
 	balance.textContent = "R$ -------";

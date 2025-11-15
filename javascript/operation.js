@@ -3,20 +3,52 @@ const dealType = document.querySelector("#tipoTransacao");
 const value = document.querySelector("#valor");
 const date = document.querySelector("#data");
 function operation() {
-    let newBalance;
-    if (dealType.value === "Depósito") {
-        newBalance = deposit();
+    const value = formatValue();
+    const dateTransaction = formatDate();
+    const today = new Date().toLocaleString("pt-BR", { dateStyle: "short" });
+    if (today === dateTransaction) {
+        let newBalance;
+        if (dealType.value === "Depósito") {
+            newBalance = deposit(value);
+        }
+        else {
+            newBalance = transferAndPayment(value);
+        }
+        updateBalance(newBalance);
+        const newTransaction = new Transaction(dateTransaction, value, dealType.value, true);
+        updateHistorical(newTransaction);
     }
     else {
-        newBalance = 0;
+        const newTransaction = new Transaction(dateTransaction, value, dealType.value, false);
+        updateHistorical(newTransaction);
+    }
+}
+function operationScheduled(value, type) {
+    let newBalance;
+    if (type === "Depósito") {
+        newBalance = deposit(value);
+    }
+    else {
+        newBalance = transferAndPayment(value);
     }
     updateBalance(newBalance);
-    const newTransaction = new Transaction(date.value, parseFloat(value.value), dealType.value);
-    updateHistorical(newTransaction);
 }
-function deposit() {
+function deposit(value) {
     const balance = getBalance();
-    return balance + parseFloat(value.value);
+    return balance + value;
 }
-export { operation };
+function transferAndPayment(value) {
+    const balance = getBalance();
+    return balance - value;
+}
+function formatDate() {
+    const year = date.value.substring(0, 4);
+    const month = date.value.substring(5, 7);
+    const day = date.value.substring(8);
+    return `${day}/${month}/${year}`;
+}
+function formatValue() {
+    return parseFloat(value.value);
+}
+export { operation, operationScheduled };
 //# sourceMappingURL=operation.js.map

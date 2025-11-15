@@ -1,5 +1,5 @@
 import { showValue, todayDate } from "./start.js";
-import { Transaction, getBalance, getHistorical, loadApp } from "./account.js";
+import { Transaction, getBalance, getHistorical, loadApp, isNewDate } from "./account.js";
 import { operation } from './operation.js';
 const button = document.querySelector(".btn");
 const form = document.querySelector("form");
@@ -8,6 +8,9 @@ const time = document.querySelector("#date");
 loadApp();
 time.textContent = todayDate();
 eye.addEventListener("click", showValue);
-form.addEventListener("submit", (e) => e.preventDefault());
 button.addEventListener("click", operation);
+form.addEventListener("submit", (e) => e.preventDefault());
+setInterval(() => {
+    isNewDate();
+}, 50000);
 //# sourceMappingURL=app.js.map

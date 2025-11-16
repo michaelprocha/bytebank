@@ -38,7 +38,7 @@ function loadApp() {
 }
 function isNewDate() {
     const today = new Date().toLocaleString("pt-BR", { dateStyle: "short" });
-    if (!historical == null) {
+    if (historical != null) {
         const newHistorical = historical.map((tra) => {
             if (today === tra.date) {
                 if (tra.done === false) {

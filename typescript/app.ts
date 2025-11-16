@@ -1,6 +1,7 @@
 import { showValue, todayDate } from "./start.js";
 import { Transaction, getBalance, getHistorical, loadApp, isNewDate } from "./account.js";
 import { operation } from './operation.js';
+import { renderExtract } from './historical-view.js';
 
 
 const button = document.querySelector(".btn")! as HTMLButtonElement;
@@ -13,7 +14,10 @@ time.textContent = todayDate();
 eye.addEventListener("click", showValue);
 button.addEventListener("click", operation);
 form.addEventListener("submit", (e: SubmitEvent) => e.preventDefault());
+renderExtract();
 
 setInterval(()=>{
+    console.log('foi');
     isNewDate();
+    renderExtract();
 }, 50000)

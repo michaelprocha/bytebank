@@ -60,7 +60,7 @@ function loadApp() {
 
 function isNewDate() {
 	const today: string = new Date().toLocaleString("pt-BR", { dateStyle: "short" });
-	if (!historical == null) {
+	if (historical != null) {
 		const newHistorical:Transaction[] = historical.map((tra) => {
 			if (today === tra.date) {
 				if (tra.done === false) {

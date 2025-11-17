@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    /* === Estrutura de pastas === */
+    "rootDir": "./typescript",
+    "outDir": "./javascript",
+
+    /* === Ambiente Front-End === */
+    "target": "ES2020",                  // Compatível com navegadores modernos
+    "module": "ESNext",                  // Permite usar import/export nativo
+    "lib": ["DOM", "ES2020"],            // Inclui APIs do navegador e JS moderno
+    "types": [],
+
+    /* === Saída === */
+    "sourceMap": true,                   // Gera mapa de origem para debug
+    "declaration": false,                // Desativa .d.ts (não necessário no front)
+    "declarationMap": false,
+
+    /* === Boas práticas e segurança === */
+    "strict": true,                      // Ativa todos os checks de tipo
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    /* === Compatibilidade de módulos === */
+    "moduleResolution": "bundler",       // Melhor opção para ES Modules no navegador
+    "verbatimModuleSyntax": true,        // Mantém import/export exatamente como no código
+    "isolatedModules": true,             // Necessário se usar imports
+    "skipLibCheck": true,
+
+    /* === JSX === */
+    "jsx": "preserve",                   // Ignora JSX (caso use HTML puro)
+    
+    /* === Detecção de módulos === */
+    "moduleDetection": "force"
+  },
+
+  "include": ["typescript/**/*"],
+  "exclude": ["node_modules", "javascript"]
+}

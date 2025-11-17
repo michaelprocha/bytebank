@@ -1,4 +1,4 @@
-import { Transaction, getBalance, balance } from "./account.js";
+import { getBalance, balance } from "./account.js";
 function showValue() {
     if (balance.textContent === "R$ -------") {
         const showBalance = getBalance().toFixed(2).replace('.', ",");

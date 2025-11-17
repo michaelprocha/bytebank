@@ -1,4 +1,4 @@
-import { Transaction, getBalance, balance } from "./account.js";
+import { getBalance, balance } from "./account.js";
 
 function showValue(): void {
 	if (balance.textContent === "R$ -------") {

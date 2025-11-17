@@ -1,4 +1,5 @@
 import { Transaction, updateHistorical, updateBalance, getBalance } from "./account.js";
+import { renderExtract } from './historical-view.js';
 const dealType = document.querySelector("#tipoTransacao");
 const value = document.querySelector("#valor");
 const date = document.querySelector("#data");
@@ -22,6 +23,7 @@ function operation() {
         const newTransaction = new Transaction(dateTransaction, value, dealType.value, false);
         updateHistorical(newTransaction);
     }
+    renderExtract();
 }
 function operationScheduled(value, type) {
     let newBalance;

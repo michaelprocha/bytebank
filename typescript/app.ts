@@ -1,8 +1,7 @@
 import { showValue, todayDate } from "./start.js";
-import { Transaction, getBalance, getHistorical, loadApp, isNewDate } from "./account.js";
+import { loadApp, isNewDate } from "./account.js";
 import { operation } from './operation.js';
 import { renderExtract } from './historical-view.js';
-
 
 const button = document.querySelector(".btn")! as HTMLButtonElement;
 const form = document.querySelector("form")! as HTMLFormElement;
@@ -17,7 +16,6 @@ form.addEventListener("submit", (e: SubmitEvent) => e.preventDefault());
 renderExtract();
 
 setInterval(()=>{
-    console.log('foi');
     isNewDate();
     renderExtract();
 }, 50000)
